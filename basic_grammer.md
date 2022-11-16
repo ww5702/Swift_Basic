@@ -23,7 +23,7 @@ String interpolatioin
 프로그램 실행 중 문자열 내에 변수 또는 상수의 실질적인 값을 표현하기 위해 사용
 \()
 
-##상수 변수
+## 상수&변수
 상수 선언 let
 Let 이름: 타입 = 값
 값의 타입이 명확하다면 타입 생략 가능
@@ -34,7 +34,7 @@ Var 이름: 타입 = 값
 값의 타입이 명확하다면 타입 생략 가능
 Var 이름 = 값
 
-기본데이터 타입
+## 기본데이터 타입
 Bool, Int, Uint, Float, Double, Character, String
 
 Var someBool: Bool = true
@@ -69,7 +69,7 @@ Var someAny: Any = 100
 someAny = “어떤 타입도 수용 가능”
 someAny = 123.12
 
-컬렉션 타입
+## 컬렉션 타입
 Array, Dictionary, Set
 
 Array = 순서가 있는 리스트 컬렉션
