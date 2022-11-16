@@ -76,24 +76,29 @@ Array = 순서가 있는 리스트 컬렉션
 Dictionary = 키와 값의 쌍으로 이루어진 컬렉션   
 Set = 순서가 없고, 멤버가 유일한 컬렉션   
    
+```
 Var integers: Array<Int> = Array<Int>()
 Integers.append()
 Integers.contains() 포함하고 있는가 -> true, false로 출력됨
 Integers,remove()
 integers.count()
+```
 비어있는 상태에서 integers[0]과 같이 표현 불가
 
+```
 Var anyDictionary: Dictionary<String, Any> = [String: Any]()
 //Key가 String타입이고 Value가 Any인 Dictionary 생성
 anyDictionary[“someKey’] = “value”
 anyDictionary[“anotherKey”] = 100
 anyDictionary.removeValue(forKey: “anotherKey”)
-
+```
+```
 Var integerSet: Set<Int> = Set<Int>()
 integerSet.insert(1)
 integerSet.insert(2)
 integerSet.insert(2)
 -> 1,2 중복된값이 없다
+```
 
 Let union: set<Int> = setA.union(setB) -> set끼리 합칠경우 중복 자동제거
 Let sortedUnion: [Int] = union.sorted() -> set 자동 정렬
@@ -106,12 +111,16 @@ Func 함수이름(매개변수1이름: 매개변수1타입, 매개변수2이름 
 	함수구현부
 	return 반환값
 }
+
+```
 Func sum(a: Int, b: Int) -> Int {
 	return a + b
 }
 Func printYourName(name: String) {
 	print(name)
 }
+```
+
 과 같이 생략도 가능
  
 매개변수가 없는 경우
