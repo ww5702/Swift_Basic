@@ -1,9 +1,9 @@
 # Swift 기본 문법
-'''
+***
 참고
 Swift Programming Language Guide [Apple Developer / iBooks]
 Swift API Design Guidelines [swift.org]
-'''
+***
 
 ## 이름짓기 규칙
 Lower Camel Case : function, method, variable, constant
