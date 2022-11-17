@@ -314,8 +314,9 @@ Struct Student {
 	}
 }
 ```
-
-// 호출
+   
+호출   
+```
 print(Student.selfIntroduction) 	// 학생타입입니다.
 
 Var test: Student = Student()	// 인스턴스 생성
@@ -327,11 +328,13 @@ print(test.name) 				// asdf 출력
 print(test.selfIntroduction)		// 저는 Swift반 asdf입니다.
 print(“제 한국나이는 \(test.koreanAge) 살이고, 미국나이는 \(test.werternAge) 살입니다. “)
 // 제 한국나이는 10살이고, 미국나이는 9살입니다.
-
-
-프로퍼티 감시자 property observer
-프로퍼티 감시자를 사용하면 프로퍼티 값이 변경될 때 원하는 동작을 수행할 수 있습니다.
-
+```
+   
+   
+## 프로퍼티 감시자 property observer
+프로퍼티 감시자를 사용하면 프로퍼티 값이 변경될 때 원하는 동작을 수행할 수 있습니다.   
+   
+```
 // 선언(willSet, didSet)
 Sturct Money {
 	// 프로퍼티 감시자 사용
@@ -365,8 +368,10 @@ Sturct Money {
 		}
 	}
 }
-
-// 사용
+```
+   
+사용   
+```
 Var moneyInMyPocket: Money = Money()
 
 // 환율이 1100.0 에서 1150.0으로 변경될 예정입니다.
@@ -379,19 +384,20 @@ moneyInMyPocket.dollar = 10
 
 print(moneyInMyPocket.won)
 // 11500.0 출력
-
-
-
-상속 inheritance
-클래스, 프로토콜 에서 가능
-열거형, 구조체 상속이 불가
-Swift는 다중상속을 지원하지 않는다
-
-// 구조
-Class 이름 : 상속받을 클래스 이름 {
-	구현부
-}
-
+```
+   
+   
+## 상속 inheritance
+클래스, 프로토콜 에서 가능   
+열거형, 구조체 상속이 불가   
+Swift는 다중상속을 지원하지 않는다   
+   
+// 구조   
+Class 이름 : 상속받을 클래스 이름 {   
+	구현부   
+}   
+   
+```
 Class Person {
 	var name: String = “ “
 	func selfIntroduce() {
@@ -415,8 +421,10 @@ Class Person {
 }
 
 	// 재정의가능한 class메서드라도 final 키워드 사용가능 -> static과 같은 동작
-
-// 실행
+```
+   
+실행   
+```
 Class Student: Person {
 	var name: String = “ “ // -> 위에서 상속받았기 때문에 오류
 	var major: String = “ “
@@ -450,5 +458,6 @@ Person.typeMethod() // static
 
 Student.classMethod() // class 메서드는 재정의 가능
 // 나머지느 재정의 불가.
+```
 
 
