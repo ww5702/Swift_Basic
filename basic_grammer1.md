@@ -1,4 +1,7 @@
 # Swift 기본 문법
+
+이름짓기 규칙, 콘솔로그, 문자열 보간법, 상수&변수, 컬렉션 타입, 함수, 함수호출, 조건문, 반복문   
+
 ***
 참고   
 Swift Programming Language Guide [Apple Developer / iBooks]   
