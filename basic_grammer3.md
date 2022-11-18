@@ -528,7 +528,7 @@ print(Strings) // [“0”,”1”,”2”,”3”,”4”]
 doubledNumbers = numbers.map{ $0 * 2 }
 ```
    
-###Filter
+### Filter
 내부의 값을 걸러서 새로운 컨테이너로 추출   
 ```
 Var filtered: [Int] = [Int]()
