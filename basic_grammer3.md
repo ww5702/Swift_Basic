@@ -295,19 +295,20 @@ optionalCasted = f as! Student 				// 런타입 오류
    
 애플리케이션이 동작 도중에 생성하는 다양한 결과값을 동적으로 확인하고 안전하게 처리할 수있도록 도와줌   
    
-Assertion
-디버깅 중 조건의 검증을 위하여 사용
-예상했던 조건이 확실히 맞는가를 검증하기 위해 자주 사용
-
+Assertion   
+디버깅 중 조건의 검증을 위하여 사용   
+예상했던 조건이 확실히 맞는가를 검증하기 위해 자주 사용   
+```
 Var someInt: Int = 0
 assert(someInt == 0, “someInt != 0”)	// someInt가 0이 맞으면 자연스럽게 지나가고, 0이 아니면 메세지 출력 후 동작정지
-
-
-Early exit
-guard를 사용하여 잘못된 값의 전달 시 빠르게 종료
-디버깅뿐만 아니라 어떤 조건에서도 동작
-guard의 else 블럭 내부에는 코드를 종료하는 (return, break)이 반드시 존재하여야 한다
-
+```
+   
+Early exit   
+guard를 사용하여 잘못된 값의 전달 시 빠르게 종료   
+디버깅뿐만 아니라 어떤 조건에서도 동작   
+guard의 else 블럭 내부에는 코드를 종료하는 (return, break)이 반드시 존재하여야 한다   
+   
+```
 Func functionWithGuard(age: Int?) {
 	guard let unwrappedAge = age,
 		unwrappedAge < 130,
@@ -317,26 +318,28 @@ Func functionWithGuard(age: Int?) {
 	}
 	print(“ 당신의 나이는 \(unwrappedAge)세 입니다.”)
 }
-
-딕셔너리에서 많이 사용된다
+```
+   
+딕셔너리에서 많이 사용된다   
+```
 Guard let age = info[“age”] as? Int else {
 	return
 } 
 someFunction(info: [“age” : “10”] 		// age값이 String값이었기 때문에 자동으로 종료된다.
-
-
-
-프로토콜 protocol
-
-특정 역할을 수행하기 위한 메서드, 프로퍼티, 이니셜라이저 등의 요구사항을 정의
-즉 어떤 타입(구조체, 클래스)에 이 기능이 꼭 필요해 그러니 이 기능을 꼭 구현해 놨어야해 라고 강요하는 것
-그 후 타입에서 채택(Adopted)해서 구현하고
-프로토콜의 요구사항을 모두 따른다면 ‘프로토콜을 준수한다(Conform)’ 이라고 표현한다
-
-Protocol 프로토콜 이름 {
-	정의부
-}
-
+```
+   
+   
+## 프로토콜 protocol
+   
+특정 역할을 수행하기 위한 메서드, 프로퍼티, 이니셜라이저 등의 요구사항을 정의   
+즉 어떤 타입(구조체, 클래스)에 이 기능이 꼭 필요해 그러니 이 기능을 꼭 구현해 놨어야해 라고 강요하는 것   
+그 후 타입에서 채택(Adopted)해서 구현하고   
+프로토콜의 요구사항을 모두 따른다면 ‘프로토콜을 준수한다(Conform)’ 이라고 표현한다   
+   
+Protocol 프로토콜 이름 {   
+	정의부   
+}   
+```
 Protocol Talkable {
 	// 프로퍼티 요구
 	var topic: String { get set }
@@ -349,7 +352,9 @@ Protocol Talkable {
 	init(topic: String, language: String)
 
 } // Talkable이라는 프로토콜은 어떤 특정한 타입에 채택이 되었을 때 그 타입은 위의 프로퍼티 메서드 이니셜라이저를 꼭 구현해야 한다. 
-
+```
+Talkable이라는 프로토콜을 채택시키기   
+```
 Struct Person: Talkable {
 }
 -> 구조체가 Talkable이라는 프로토콜을 채택했다.
@@ -368,33 +373,35 @@ Protocol Writeable {
 Protocol ReadSpeakable: Readable {
 	func speak() 
 } // 이 프로토콜은 이미 Readable 프로토콜을 상속 받았기 때문에 read() 기능도 똑같이 필요하다
-
-
-클래스 상속과 프로토콜
-클래스 상속과 프로토콜 채택을 동시에 하려면
-상속받으려는 클래스를 먼저 명시하고, 그 뒤에 채택할 프로토콜 목록을 작성한다
+```
+   
+클래스 상속과 프로토콜   
+클래스 상속과 프로토콜 채택을 동시에 하려면   
+상속받으려는 클래스를 먼저 명시하고, 그 뒤에 채택할 프로토콜 목록을 작성한다   
+```
 Class SubClass: SuperClass, Writeable, RedSpeakable {
 }
-
-인스턴스가 특정 프로토콜을 준수하는지 is, as연산자를 통해 확인할 수 있다
-Var someAny: Any = sup
-someAny is Readable()
-someAny is ReadSpeakable() 
-
-
-익스텐션 extension
-구조체, 클래스 등 여러 타입에 새로운 기능을 추가할 수 있는 기능
-연산 타입 프로퍼티나 타입메서드 이니셜라이저 등등을 추가 가능
-
-Extension 확장할 타입 이름 {
+```
+   
+인스턴스가 특정 프로토콜을 준수하는지 is, as연산자를 통해 확인할 수 있다   
+Var someAny: Any = sup   
+someAny is Readable()   
+someAny is ReadSpeakable()    
+   
+   
+## 익스텐션 extension
+구조체, 클래스 등 여러 타입에 새로운 기능을 추가할 수 있는 기능   
+연산 타입 프로퍼티나 타입메서드 이니셜라이저 등등을 추가 가능   
+   
+Extension 확장할 타입 이름 {   
 	타입에 추가될 새로운 기능 구현
-}
-
-추가적으로 다른 프로토콜을 채택할 수 있도록 확장도 가능
-Extension 확장할 타입 이름 : 프로토콜1, 프로토콜2, … {
-	프로토콜 요구사항 구현
-}
-
+}   
+   
+추가적으로 다른 프로토콜을 채택할 수 있도록 확장도 가능   
+Extension 확장할 타입 이름 : 프로토콜1, 프로토콜2, … {   
+	프로토콜 요구사항 구현   
+}   
+```
 Extension Int {
 	var isEven: Bool {
 		return self % 2 == 0
@@ -410,9 +417,10 @@ print(2.isEven) // true
 Var number: Int = 3
 print(number.isEven) // false
 // 선언 후 사용도 가능
-
-
-메서드 추가
+```
+   
+메서드 추가   
+```
 Extension Int {
 	func multiply(by n: Int) -> Int {
 		return self * n
@@ -421,26 +429,28 @@ Extension Int {
 
 print(3.multiply(by: 2)) // 6
 print(4.multiply(by: 3)) // 12
-
-
-이니셜라이저 추가
+```
+   
+이니셜라이저 추가   
+```
 Extension String {
 	init(intTypeNumber: Int) {
 		self = “\(intTypeNumber)”
 	}
 }
 Let stringFromInt: String = String(intTypeNumber: 100)		// Int 100을 String “100” 으로 변환
+```
 
-
-오류처리 error handling
-error프로토콜과 열거형을 통해서 오류를 표현한다
-
-Enum 오류종류이름: Error {
-	case 종류1
-	case 종류2
-	…
-}
-
+## 오류처리 error handling
+error프로토콜과 열거형을 통해서 오류를 표현한다   
+   
+Enum 오류종류이름: Error {   
+	case 종류1   
+	case 종류2   
+	…   
+}   
+   
+```
 // 자판기 동작 오류 종류를 표현한 열거형
 Enum VendingMachineError: Error {
 	case invalidInput
@@ -478,23 +488,25 @@ Class vendingMachine {
 		}
 		// 등등의 오류
 }
-
-오류발생의 여지가 있는 throws 함수는 try를 사용하여 호출해야 한다
-Try, try!, try? 으로 사용
-
-Try는 do-catch
-Try?는 오류가 발생했으면 nil로 돌려받고, 정상동작한다면 정상반환값을 받는다
-Try!는 오류가 발생하지 않을거라는 확신을 가질때 사용, 오류 발생시 런타임 오류
-
-
-
-고차함수 higher-order function
-
-전달인자로 함수를 받거나 함수실행의 결과를 함수로 변환
-Map, filter, reduce
-
-Map
-기존 데이터를 변형하여 새로운 컨테이너 생성
+```
+   
+오류발생의 여지가 있는 throws 함수는 try를 사용하여 호출해야 한다   
+Try, try!, try? 으로 사용   
+   
+Try는 do-catch   
+Try?는 오류가 발생했으면 nil로 돌려받고, 정상동작한다면 정상반환값을 받는다   
+Try!는 오류가 발생하지 않을거라는 확신을 가질때 사용, 오류 발생시 런타임 오류   
+   
+   
+   
+## 고차함수 higher-order function
+   
+전달인자로 함수를 받거나 함수실행의 결과를 함수로 변환   
+Map, filter, reduce   
+   
+### Map   
+기존 데이터를 변형하여 새로운 컨테이너 생성   
+```
 Let numbers: [Int] = [0,1,2,3,4]
 Var doubledNumbers: [Int]
 Var Strings = [String]
@@ -514,11 +526,11 @@ print(Strings) // [“0”,”1”,”2”,”3”,”4”]
 
 // 전부 생략하여 깔끔하게 2배 문구
 doubledNumbers = numbers.map{ $0 * 2 }
-
-
-Filter
-내부의 값을 걸러서 새로운 컨테이너로 추출
-
+```
+   
+###Filter
+내부의 값을 걸러서 새로운 컨테이너로 추출   
+```
 Var filtered: [Int] = [Int]()
 
 // 짝수인 친구들만 필터링
@@ -533,11 +545,11 @@ print(filtered) // [0,2,4]
 Let oddNumbers: [Int] = numbers.filter {
 	$0 % 2 != 0
 }
-
-
-Reduce 	
-내부의 콘텐츠를 하나로 통합
-
+```
+   
+### Reduce 	
+내부의 콘텐츠를 하나로 통합   
+```
 Let someNumbers: [Int] = [2,8,15]
 
 // 초기값이 0이고 someNumbers 내부의 모든 값을 더합니다.
@@ -550,3 +562,4 @@ print(sum) 		// 25
 // 초기값이 3이고 someNumbers 내부의 모든 값을 더합니다
 Let sumFromThree = someNumbers.reduce(3) { $0 + $1 }
 print(sumFromThree)		 // 28
+```
