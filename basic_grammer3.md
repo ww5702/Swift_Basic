@@ -25,7 +25,7 @@ Let asdf: PersonB = PersonB(name: “asdf”, ag: 20, nickName: “asdf2”)
 asdf.name = “asdf” // 이런식보다는 위에 줄이 훨씬 간편하다는 소리
 ```
    
-하지만 만약에 nickName이 없는 즉 값을 할당 할 수 없는 상태라면 옵셔널 사용   
+하지만 만약에 nickName이 없는 즉, 값을 할당 할 수 없는 상태라면 옵셔널 사용   
 ``` 
 Class PersonC {
 	var name: String
@@ -45,12 +45,12 @@ Let mike: PersonC = PersonC(name: “mike”, age: 15, nickName: “m”)
 ```
    
 암시적 추출 옵셔널 (! 사용) 프로퍼티가 꼭 필요한 경우에 사용   
-
-Var owner: PerconC!
-
-// 실패 가능한 이니셜라이저 -> 전달되는 값들이 정상 범주를 넘어가거나 실패가능성이 있다면
-// nil을 반환할 수 있도록
-
+   
+Var owner: PerconC!   
+   
+실패 가능한 이니셜라이저 -> 전달되는 값들이 정상 범주를 넘어가거나 실패가능성이 있다면   
+nil을 반환할 수 있도록   
+```
 Class PersonD {
 	var name: String
 	var age: Int
@@ -75,10 +75,11 @@ Let John3: PersonD? = PersonD(name: “”, age: 23)
 
 print(John2) // 오류 nil 출력
 print(John3) // 오류 nil 출력
-
-// 디이니셜라이저
-// 인스턴스가 해제되는 시점에 해야할 일을 구현
-
+```
+   
+디이니셜라이저   
+인스턴스가 해제되는 시점에 해야할 일을 구현   
+```
 Class PersonE {
 	var name: String
 	var per: Puppy?’
@@ -103,13 +104,12 @@ Var Donald: PersonE? = PersonE(name:”Donald”, child Jenny)
 Donald?.pet = happy
 Donald = nil // Donald 인스턴스가 더이상 필요없으므로 메모리에서 해제
 // donald가 jenny에게 happy를 인도합니다 출력
-
-
-옵셔널 체이닝과 nil 병합 연산자
-Optional chaining & nil-coalescing operatior
-
-옵셔널 체이닝은 옵셔널 요소 내부의 프로퍼티로 옵셔널이 연속적으로 연결되는 경우 사용
-
+```
+   
+## 옵셔널 체이닝 & nil 병합 연산자   Optional chaining & nil-coalescing operatior
+   
+옵셔널 체이닝은 옵셔널 요소 내부의 프로퍼티로 옵셔널이 연속적으로 연결되는 경우 사용   
+```
 Class Person {
 	var name: String
 	var job: String?
@@ -134,9 +134,11 @@ Let a: Person? = Person(name:” a “)
 Let apart: Apartment? = Apartment(dong: “101”, ho: “202”)
 Let b: Person? = Person(name:” b “)
 // 필수적으로 가져야할 프로퍼티만 가진 상태
-
-// 만약 경비원의 직업이 궁금하다면?
-// 셔널 체이닝을 사용하지 않는 경우
+```
+   
+만약 경비원의 직업이 궁금하다면?   
+셔널 체이닝을 사용하지 않는 경우   
+```
 Func guardJob (owner: Person?) {
 	if let owner = owner {
 		if let home = owner.home {
@@ -150,8 +152,10 @@ Func guardJob (owner: Person?) {
 		}
 	}
 } 
-
-//옵셔널 체이닝을 사용
+```
+하드코딩 시 너무 가시성 불편   
+옵셔널 체이닝을 사용   
+```
 Func guardJob (owner: Person?) {	// 사람이 있는지 없는지 확인
 	if let guardJob = owner?.home?.guard?.job {
 		print(“ 직업은 \(guardjob)입니다. “)
@@ -160,36 +164,41 @@ Func guardJob (owner: Person?) {	// 사람이 있는지 없는지 확인
 	}
 }
 guardJob(owner: a) // 직업이 없어요 출력됨
-
-// 예시
-A?.home?.guard?.job			// nil
-A?.home = apart				// a의 집을 선언했던 apart로 지정
+```
+   
+예시   
+```
+A?.home?.guard?.job				// nil
+A?.home = apart					// a의 집을 선언했던 apart로 지정
 
 A?.home 					// Optional(Apartment)
-A?.home?.guard				// 여전히 없음 nil
+A?.home?.guard					// 여전히 없음 nil
 
-A?.home?.guard = b			// a집의 경비원을 b로 지정
-A?.home?.guard?.name 		// b 출력됨
-A?.home?.guard?.job			// b의 직업은 없으므로 nil 출력
+A?.home?.guard = b				// a집의 경비원을 b로 지정
+A?.home?.guard?.name 				// b 출력됨
+A?.home?.guard?.job				// b의 직업은 없으므로 nil 출력
 
-A?.home?.guard?.job = “경비원’	// b의 직업을 경비원으로 지정
-
-// nil 병합 연산자
+A?.home?.guard?.job = “경비원’			// b의 직업을 경비원으로 지정
+```
+   
+nil 병합 연산자   
+```
 Var guardJob: String
-guardJob = a?.home?.guard?.job ?? “슈퍼맨” 		// ?? 앞의 값이 nil이라면 그 nil의 값을 뒤의 “ “ 내용의 값으로 입력
+guardJob = a?.home?.guard?.job ?? “슈퍼맨” 			// ?? 앞의 값이 nil이라면 그 nil의 값을 뒤의 “ “ 내용의 값으로 입력
 print(guardJob)							// 이미 경비원이라는 직업이 있었으므로 경비원 출력
 A?.home?.guard?.job = nil					// 다시 nil로 초기화
 
-guardJob = a?.home?.guard?.job ?? “슈퍼맨” 		// ?? 앞의 값이 nil이라면 그 nil의 값을 뒤의 “ “ 내용의 값으로 입력
+guardJob = a?.home?.guard?.job ?? “슈퍼맨” 			// ?? 앞의 값이 nil이라면 그 nil의 값을 뒤의 “ “ 내용의 값으로 입력
 print(guardJob)							// 직업이 nil로 초기화됐으므로 슈퍼맨 출력됨
-
-
-타입캐스팅	type casting
-
-타입캐스팅은 인스턴스의 타입을 확인하는 용도
-클래스의 인스턴스를 부모 혹은 자식 클래스의 타입으로 상용할 수 있는지 확인하는 용도
-Is, as를 사용
-
+```
+   
+## 타입캐스팅	type casting
+   
+타입캐스팅은 인스턴스의 타입을 확인하는 용도   
+클래스의 인스턴스를 부모 혹은 자식 클래스의 타입으로 상용할 수 있는지 확인하는 용도   
+Is, as를 사용   
+   
+```
 Let someInt: Int = 100
 Let someDouble: Double = Double(someInt) // 이것은 타입캐스팅이 아니다
 
@@ -217,9 +226,10 @@ Class UniversityStudent: Student {
 Var a: Person = Person()
 Var b: Student = Student()
 Var c: UniversityStudent = UniversityStudent()
-
-// 타입확인
-
+```
+   
+타입확인   
+```
 Var result: Bool
 Result = a is Person			 // true
 Result = a is Student 			// false
@@ -241,32 +251,37 @@ If a is UniversityStudent {
 	print(“a 는 사람입니다. “)
 } // a는 사람입니다 출력
 // switch문도 똑같이 사용가능
-
-업캐스팅
-as를 사용하여 부모클래스의 인스턴스로 사용할 수있도록 컴파일러에게 타입정보를 전달해준다
-많이 사용되지는 않는다
-
+```
+   
+업캐스팅   
+as를 사용하여 부모클래스의 인스턴스로 사용할 수있도록 컴파일러에게 타입정보를 전달해준다   
+많이 사용되지는 않는다   
+   
+```
 Var d.Person = UniversityStudent() as Person // d도 대학생이지만 사람이기도 하다
 Var e: Student = Student()
 Var f: Any = Person() // as Any 생략 가능
-
-다운캐스팅
-as? 와 as!를 사용하여 자식 클래스의 인스턴스로 사용할 수 있도록 인스턴스의 타입정보 전환
+```
+   
+다운캐스팅   
+as? 와 as!를 사용하여 자식 클래스의 인스턴스로 사용할 수 있도록 인스턴스의 타입정보 전환   
  
 
-조건부 다운 캐스팅 as?
-
-Var optionalCasted : Student?
+### 조건부 다운 캐스팅 as?
+   
+```   
+Var optionalCasted : Student?   
 // 사람타입으로 지정이 되어있는데 얘가 실질적으로 학생일 수 있느냐 라는 경우
 
 optionalCasted = d as? UniversityStudent 		// d는 실질적으로 대학생으로 되어있기 때문에 가능
 optionalCasted = e as? UniversityStudent 		// nil
 optionalCasted = f as? UniversityStudent 		// nil
 optionalCasted = f as? Student 				// nil
-
-
-강제 다운 캐스팅 as!
-
+```
+   
+### 강제 다운 캐스팅 as!
+   
+```
 Var forcedCasted: Student
 // 넌 강제로 이거 해야해 라는 경우
 
@@ -274,12 +289,12 @@ optionalCasted = d as! UniversityStudent		// 원래 대학생이었기에 가능
 optionalCasted = e as! UniversityStudent 		// 런타임 오류
 optionalCasted = f as! UniversityStudent 		// 런타임 오류
 optionalCasted = f as! Student 				// 런타입 오류
-
-
-Assert와 guard.  Assertion, early exit
-
-애플리케이션이 동작 도중에 생성하는 다양한 결과값을 동적으로 확인하고 안전하게 처리할 수있도록 도와줌
-
+```
+   
+## Assert와 guard.  Assertion, early exit
+   
+애플리케이션이 동작 도중에 생성하는 다양한 결과값을 동적으로 확인하고 안전하게 처리할 수있도록 도와줌   
+   
 Assertion
 디버깅 중 조건의 검증을 위하여 사용
 예상했던 조건이 확실히 맞는가를 검증하기 위해 자주 사용
