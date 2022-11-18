@@ -2,12 +2,12 @@
    
 옵셔널 값 추출, 구조체, 클래스, 열거형, 값 타입 & 참조 타입, 클로저, 프로퍼티, 상속
 
-인스턴스의 생성과 소멸 init, deinit
-
-모든 프로퍼티에 유효한 값이 할당되어 있어야 한다
-프로퍼티는 무조건 초기화되어있어야한다
-이니셜라이저를 사용하면 초기화와 동시에 값을 할당할 수 있다.
-
+## 인스턴스의 생성과 소멸 init, deinit
+   
+모든 프로퍼티에 유효한 값이 할당되어 있어야 한다   
+프로퍼티는 무조건 초기화되어있어야한다   
+이니셜라이저를 사용하면 초기화와 동시에 값을 할당할 수 있다.   
+```
 Class PersonB {
 	var name: String
 	var age: Int
@@ -23,9 +23,10 @@ Class PersonB {
 
 Let asdf: PersonB = PersonB(name: “asdf”, ag: 20, nickName: “asdf2”)
 asdf.name = “asdf” // 이런식보다는 위에 줄이 훨씬 간편하다는 소리
-
-// 하지만 만약에 nickName이 없는 즉 값을 할당 할 수 없는 상태라면 옵셔널 사용
-  
+```
+   
+하지만 만약에 nickName이 없는 즉 값을 할당 할 수 없는 상태라면 옵셔널 사용   
+``` 
 Class PersonC {
 	var name: String
 	var age: Int
@@ -41,8 +42,10 @@ Class PersonC {
 
 Let Jenny: PersonC = PersonC(name: “Jenny”, age: 10)
 Let mike: PersonC = PersonC(name: “mike”, age: 15, nickName: “m”)
+```
+   
+암시적 추출 옵셔널 (! 사용) 프로퍼티가 꼭 필요한 경우에 사용   
 
-// 암시적 추출 옵셔널 (! 사용) 프로퍼티가 꼭 필요한 경우에 사용
 Var owner: PerconC!
 
 // 실패 가능한 이니셜라이저 -> 전달되는 값들이 정상 범주를 넘어가거나 실패가능성이 있다면
