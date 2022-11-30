@@ -31,3 +31,7 @@ sound = 소리
 badge = 빨간색 동그라미 숫자   
    
 만약
+<img width="438" alt="스크린샷 2022-11-30 오후 3 46 47" src="https://user-images.githubusercontent.com/60501045/204726764-82757333-f18f-4694-8966-ba42794e2342.png">
+
+
+<img width="451" alt="스크린샷 2022-11-30 오후 3 47 28" src="https://user-images.githubusercontent.com/60501045/204726867-ac6e7bcb-df50-4379-b2a6-84e995e0f14d.png">
