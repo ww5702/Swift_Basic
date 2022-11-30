@@ -5,4 +5,4 @@
 화면 상단에 뜨는 앱 알림을 'push'라고 말하며 notification과 혼동할 수 있지만   
 push는 앱 외부에서 알림을 보내는 경우이고,   
 Notification은 서버에서 보낼 수도 있고, 앱 내에서도 보낼 수 있다.   
-<mark style='background-color: #0366d6'> 파랑 </mark>
+<font color='dodgerblue'> 예쁜 파랑 </font>
