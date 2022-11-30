@@ -14,7 +14,8 @@ Notification을 사용할 때, 권한을 요천하는 것이다.
 권한을 요청하기 위해 UNUserNotificationCenter 인스턴스를 가져와서   
 requestAuthorization(options:completionHandler:) 메서드를 호출한다. 
    
-<img width="438" alt="스크린샷 2022-11-30 오후 3 46 47" src="https://user-images.githubusercontent.com/60501045/204726764-82757333-f18f-4694-8966-ba42794e2342.png">
+<img width="278" alt="스크린샷 2022-11-30 오후 4 19 58" src="https://user-images.githubusercontent.com/60501045/204732375-efa90883-f3dd-4533-95ec-9df84a5f69b8.png">
+
    
 ```
 let center = UNUserNotificationCenter.current()
