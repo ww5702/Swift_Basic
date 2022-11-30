@@ -51,5 +51,3 @@ center.requestAuthorization(options: [.alert, .sound, .badge, .provisional]) { g
    
 provisonal 옵션만 추가해주면 된다.   
 
-## 승인된 권한으로 notification 커스텀하기
-
