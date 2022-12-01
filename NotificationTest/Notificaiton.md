@@ -51,3 +51,4 @@ center.requestAuthorization(options: [.alert, .sound, .badge, .provisional]) { g
    
 provisonal 옵션만 추가해주면 된다.   
 
+ 
