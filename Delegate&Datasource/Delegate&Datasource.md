@@ -1,5 +1,8 @@
 # Delegete, Datasource
-
+<img width="719" alt="스크린샷 2022-12-13 오후 3 42 53" src="https://user-images.githubusercontent.com/60501045/207245534-b39bfa85-3689-43af-900f-f08136aa8fbe.png">
+   
+   
+   
 ## Delegate
 Delegate는 '위임하다'라는 사전적 의미를 갖고 있다.   
 즉 위임자라고 생각하는것이 편하다.   
