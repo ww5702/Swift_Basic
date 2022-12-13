@@ -9,18 +9,49 @@ Delegate는 '위임하다'라는 사전적 의미를 갖고 있다.
    
 Delegate는 객체 지향 프로그래밍에서 하나의 객체가 모든 일을 처리하는 것이 아닌   
 처리해야할 일중 일부를 다른 객체에 넘기는것을 뜻한다.   
-(TableView의 시각적인 부분 수정, 행의 선택관리, 액서세리뷰 지원, 개별 행 편집을 도와준다.)   
+   
+   
+TableView Delegate 객체는 UITableViewDelegate 프로토콜을 채택한다.   
+TableView의 시각적인 부분 수정, 행의 선택관리, 액서세리뷰 지원, 개별 행 편집을 도와준다.   
+테이블뷰의 세세한 부분을 조정할 수 있다.   
+주요 메서드는 다음과 같다.(Datasource와는 다르게 필수로 구현해야 하는 메서드는 없다.)   
+```
+// 특정 위치 행의 높이를 묻는 메서드
+ func tableView(UITableView, heightForRowAt: IndexPath)
+ // 특정 위치 행의 들여쓰기 수준을 묻는 메서드
+ func tableView(UITableView, indentationLevelForRowAt: IndexPath)
+
+ // 지정된 행이 선택되었음을 알리는 메서드
+ func tableView(UITableView, didSelectRowAt: IndexPath)
+
+ // 지정된 행의 선택이 해제되었음을 알리는 메서드
+ func tableView(UITableView, didDeselectRowAt: IndexPath)
+
+ // 특정 섹션의 헤더뷰 또는 푸터뷰를 요청하는 메서드
+ func tableView(UITableView, viewForHeaderInSection: Int)
+ func tableView(UITableView, viewForFooterInSection: Int)
+
+ // 특정 섹션의 헤더뷰 또는 푸터뷰의 높이를 물어보는 메서드
+ func tableView(UITableView, heightForHeaderInSection: Int)
+ func tableView(UITableView, heightForFooterInSection: Int)
+
+ // 테이블뷰가 편집모드에 들어갔음을 알리는 메서드
+ func tableView(UITableView, willBeginEditingRowAt: IndexPath)
+
+ // 테이블뷰가 편집모드에서 빠져나왔음을 알리는 메서드
+ func tableView(UITableView, didEndEditingRowAt: IndexPath?)
+```
    
 
 ## Datasource 
 Datasource는 데이터 모델의 Delegate로 테이블 뷰의 시각적 모양에 대한 최소한의 정보를 제공한다.  
 Delegate와 비슷하게 저리 해야 할 일 중 일부를 다른 객체에 넘겨서 작업을 대신해주는 역할을 한다.   
-(TableView 객체에 섹션의 수와 행의 수를 알려주며, 행의 삽입, 삭제 및 정렬 기능을 구현.)  
    
    
-TableView 데이터 소스 객체는 UITableViewDataSource프로토콜을 채택한다   
+TableView Datasource 객체는 UITableViewDataSource프로토콜을 채택한다   
 ex) class ViewController: UITasbleViewDataSource   
 앞서 말했듯이 데이터소스는 테이블 뷰를 생성하고 수정하는데 필요한 정보를 제공한다.   
+TableView 객체에 섹션의 수와 행의 수를 알려주며, 행의 삽입, 삭제 및 정렬 기능을 구현.   
 주요 메서드는 다음과 같다.   
 ```
 @required 
