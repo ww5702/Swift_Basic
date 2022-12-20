@@ -20,7 +20,7 @@ func square(value: Double) -> Double {
 ```
 두 함수를 이용하여 이와 같이 표현할 수 있다.   
 ```
-sumOfSquare(square, 1,2,3,4,5,6)
+sumOfSquare(square, 1,2,3,4,5)
 // 55.0
 ```
 함수를 인자에 할당하였기 때문에 추론을 사용하지 않습니다.   
@@ -28,4 +28,22 @@ sumOfSquare(square, 1,2,3,4,5,6)
 위의 square함수 역할을 하는 클로저를 만들어 인자에 할당하도록 한다.   
 ```
 sumOfSquare( {(value: Double) -> Double in return value * value}, 1,2,3,4,5 )
+```
+아직은 추론으로 코드를 줄이지 않았다.   
+위 클로저에서 반환타입 Double은 value 값의 타입을 통해 타입이 추론되므로 생략가능   
+```
+sumOfSquare( {(value: Double) in return value * value}, 1,2,3,4,5 )
+```
+클로저에서 항상 in 뒤에는 return 값이 나오므로 추정해서 생략가능   
+```
+sumOfSquare( {(value:Double) in value * value}, 1,2,3,4,5 )
+```
+클로저의 value값의 타입은 sumOfSquare 함수에 정의되어 있기에 생략 가능.   
+```
+sumOfSquare( { value in value * value }, 1,2,3,4,5)
+```
+클로저의 value는 중복해서 쓰이기 때문에 인자로 들어온 순서대로 $0을 통해 사용할 수 있다.   
+따라서 값을 어떻게 반환할지만 정하고 생략 가능   
+```
+sumOfSquare( { $0 * $0 }, 1,2,3,4,5)
 ```
