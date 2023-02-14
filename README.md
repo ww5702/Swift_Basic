@@ -1,5 +1,6 @@
 # Swift_Basic
 
+# 1장
 AppDelegate.swift = 앱의 실행주기(Life Cycle)를 관리하는 내요으이 스위프트 소스코드가 들어있는 클래스파일이다.   
 SceneDelegate.swift = 사용자 인터페이스의 실행주기를 관리하는 내용의 스위프트 소스 코드가 들어있는 클래스파일이다.   
 ViewController.swift = 화면에 보이는 뷰에서 처리하는 내용의 스위프트 소스 코드를 담고 있는 클래스 파일이다.   
@@ -40,3 +41,6 @@ strong으로 선언된 변수들은 앱이 종료되기 전까지는 메모리�
 }
 ```
 @IBAction = 객체의 이벤트를 제어하기 위해 사용하는 키워드로, @IBAction으로 정의된 함수를 액션함수라고 부른다.   
+   
+# 2장 뷰 기반 프로그램 직접 만들기   
+CGFloat은 Xcode에서 Float을 재정의 해 놓은 자료형으로 Float과 같다고 생각하면 된다.   
